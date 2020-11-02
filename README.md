@@ -1,4 +1,4 @@
-php-pretty-datetime
+date-human-readable
 ===================
 
 Generates human-readable strings for PHP DateTime objects. It handles dates in the past and future. For future dates, it uses the format 'In x unit', ie: 'In 1 minute'. For dates in the past, it uses 'x unit ago', ie: '2 years ago'.
@@ -12,14 +12,14 @@ in your composer.json file:
 
 ```
 "require": {
-    "danielstjules/php-pretty-datetime": "~1.0.0"
+    "ramphor/date-human-readable": "~1.0.0"
 }
 ```
 
 Otherwise, you can simply require the file directly:
 
 ```php
-require_once 'path/to/php-pretty-datetime/src/HumanReadable.php';
+require_once 'path/to/date-human-readable/src/HumanReadable.php';
 ```
 
 ## Usage
@@ -49,7 +49,7 @@ HumanReadable::parse($dateTime, $now) // Tomorrow
 
 ## Tests
 
-[![Build Status](https://travis-ci.org/danielstjules/php-pretty-datetime.png)](https://travis-ci.org/danielstjules/php-pretty-datetime)
+[![Build Status](https://travis-ci.org/ramphor/date-human-readable.png)](https://travis-ci.org/ramphor/date-human-readable)
 
 From the project directory, tests can be ran using `phpunit`
 
