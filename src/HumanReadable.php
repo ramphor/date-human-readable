@@ -1,8 +1,7 @@
 <?php
+namespace Ramphor\Date;
 
-namespace PrettyDateTime;
-
-class PrettyDateTime
+class HumanReadable
 {
     // The constants correspond to units of time in seconds
     const MINUTE = 60;
