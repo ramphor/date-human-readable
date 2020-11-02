@@ -19,18 +19,18 @@ in your composer.json file:
 Otherwise, you can simply require the file directly:
 
 ```php
-require_once 'path/to/php-pretty-datetime/src/PrettyDateTime.php';
+require_once 'path/to/php-pretty-datetime/src/HumanReadable.php';
 ```
 
 ## Usage
 
 ```php
-use PrettyDateTime\PrettyDateTime;
+use Ramphor\Date\HumanReadable;
 
-PrettyDateTime::parse(new DateTime('now'));         // Moments ago
-PrettyDateTime::parse(new DateTime('+ 59 second')); // Seconds from now
-PrettyDateTime::parse(new DateTime('+ 1 minute'));  // In 1 minute
-PrettyDateTime::parse(new DateTime('- 59 minute')); // 59 minutes ago
+HumanReadable::parse(new DateTime('now'));         // Moments ago
+HumanReadable::parse(new DateTime('+ 59 second')); // Seconds from now
+HumanReadable::parse(new DateTime('+ 1 minute'));  // In 1 minute
+HumanReadable::parse(new DateTime('- 59 minute')); // 59 minutes ago
 
 // You can supply a secondary argument to provide an alternate reference
 // DateTime. The default is the current DateTime, ie: DateTime('now'). In
@@ -40,11 +40,11 @@ PrettyDateTime::parse(new DateTime('- 59 minute')); // 59 minutes ago
 
 $now = new DateTime('1991-05-18 00:00:00 UTC');
 $dateTime = new DateTime('1991-05-17 23:59:59 UTC');
-PrettyDateTime::parse($dateTime, $now); // Yesterday
+HumanReadable::parse($dateTime, $now); // Yesterday
 
 $now = new DateTime('1991-05-17 23:59:59 UTC');
 $dateTime = new DateTime('1991-05-18 00:00:00 UTC');
-PrettyDateTime::parse($dateTime, $now) // Tomorrow
+HumanReadable::parse($dateTime, $now) // Tomorrow
 ```
 
 ## Tests

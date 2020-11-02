@@ -1,10 +1,10 @@
 <?php
 
-require __DIR__ . '/../src/PrettyDateTime.php';
+require __DIR__ . '/../src/HumanReadable.php';
 
-use PrettyDateTime\PrettyDateTime;
+use Ramphor\Date\HumanReadable;
 
-class PrettyDateTimeTestCase extends PHPUnit_Framework_TestCase
+class HumanReadableTestCase extends PHPUnit_Framework_TestCase
 {
     protected function setUp()
     {
@@ -17,13 +17,13 @@ class PrettyDateTimeTestCase extends PHPUnit_Framework_TestCase
     public function testSingleDateTime()
     {
         $now = new DateTime('now');
-        $this->assertEquals('Moments ago', PrettyDateTime::parse($now));
+        $this->assertEquals('Moments ago', HumanReadable::parse($now));
     }
 
     public function testSameDateTime()
     {
         $now = new DateTime('now');
-        $this->assertEquals('Moments ago', PrettyDateTime::parse($now, $now));
+        $this->assertEquals('Moments ago', HumanReadable::parse($now, $now));
     }
 
     // Testing DateTimes that occurred in the past
@@ -35,8 +35,8 @@ class PrettyDateTimeTestCase extends PHPUnit_Framework_TestCase
     {
         $dateTime = clone $this->beforeMidnight;
         $dateTime->modify($timeAgo);
-        $prettyDateTime = PrettyDateTime::parse($dateTime, $this->beforeMidnight);
-        $this->assertEquals($prettyString, $prettyDateTime);
+        $humanReadable = HumanReadable::parse($dateTime, $this->beforeMidnight);
+        $this->assertEquals($prettyString, $humanReadable);
     }
 
     public function pastDateTimesAndStrings()
@@ -45,7 +45,7 @@ class PrettyDateTimeTestCase extends PHPUnit_Framework_TestCase
             array('- 59 second', 'Moments ago'),
             array('- 1 minute', '1 minute ago'),
             array('- 1 hour', '1 hour ago'),
-            array(sprintf('- %d second', PrettyDateTime::YEAR), '1 year ago')
+            array(sprintf('- %d second', HumanReadable::YEAR), '1 year ago')
         );
 
         // Test that DateTimes 2..59 minutes prior all say 'x minutes ago'
@@ -71,13 +71,13 @@ class PrettyDateTimeTestCase extends PHPUnit_Framework_TestCase
 
         // Within the past 2..11 months
         for ($i = 2; $i <= 11; $i++) {
-            $seconds = PrettyDateTime::MONTH * $i + PrettyDateTime::HOUR;
+            $seconds = HumanReadable::MONTH * $i + HumanReadable::HOUR;
             array_push($testData, array("- $seconds second", "$i months ago"));
         }
 
         // Within the past 2..20 years
         for ($i = 2; $i <= 20; $i++) {
-            $seconds = PrettyDateTime::YEAR * $i;
+            $seconds = HumanReadable::YEAR * $i;
             array_push($testData, array("- $seconds second", "$i years ago"));
         }
 
@@ -88,8 +88,8 @@ class PrettyDateTimeTestCase extends PHPUnit_Framework_TestCase
     {
         $dateTime = clone $this->midnight;
         $dateTime->modify('- 1 second');
-        $prettyDateTime = PrettyDateTime::parse($dateTime, $this->midnight);
-        $this->assertEquals('Yesterday', $prettyDateTime);
+        $humanReadable = HumanReadable::parse($dateTime, $this->midnight);
+        $this->assertEquals('Yesterday', $humanReadable);
     }
 
     // Testing DateTimes that will occur in the future
@@ -101,8 +101,8 @@ class PrettyDateTimeTestCase extends PHPUnit_Framework_TestCase
     {
         $dateTime = clone $this->midnight;
         $dateTime->modify($timeFromNow);
-        $prettyDateTime = PrettyDateTime::parse($dateTime, $this->midnight);
-        $this->assertEquals($prettyString, $prettyDateTime);
+        $humanReadable = HumanReadable::parse($dateTime, $this->midnight);
+        $this->assertEquals($prettyString, $humanReadable);
     }
 
     public function futureDateTimesAndStrings()
@@ -111,7 +111,7 @@ class PrettyDateTimeTestCase extends PHPUnit_Framework_TestCase
             array('+ 59 second', 'Seconds from now'),
             array('+ 1 minute', 'In 1 minute'),
             array('+ 1 hour', 'In 1 hour'),
-            array(sprintf('+ %d second', PrettyDateTime::YEAR), 'In 1 year')
+            array(sprintf('+ %d second', HumanReadable::YEAR), 'In 1 year')
         );
 
         // Test that DateTimes 2..59 minutes later all say 'In x minutes'
@@ -137,13 +137,13 @@ class PrettyDateTimeTestCase extends PHPUnit_Framework_TestCase
 
         // In the next 2..11 months
         for ($i = 2; $i <= 11; $i++) {
-            $seconds = PrettyDateTime::MONTH * $i;
+            $seconds = HumanReadable::MONTH * $i;
             array_push($testData, array("+ $seconds second", "In $i months"));
         }
 
         // In the next 2..20 years
         for ($i = 2; $i <= 20; $i++) {
-            $seconds = PrettyDateTime::YEAR * $i;
+            $seconds = HumanReadable::YEAR * $i;
             array_push($testData, array("+ $seconds second", "In $i years"));
         }
 
@@ -154,7 +154,7 @@ class PrettyDateTimeTestCase extends PHPUnit_Framework_TestCase
     {
         $dateTime = clone $this->beforeMidnight;
         $dateTime->modify('+ 1 second');
-        $prettyDateTime = PrettyDateTime::parse($dateTime, $this->beforeMidnight);
-        $this->assertEquals('Tomorrow', $prettyDateTime);
+        $humanReadable = HumanReadable::parse($dateTime, $this->beforeMidnight);
+        $this->assertEquals('Tomorrow', $humanReadable);
     }
 }

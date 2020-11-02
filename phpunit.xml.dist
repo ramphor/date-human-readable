@@ -4,7 +4,7 @@
          stopOnFailure="false"
          syntaxCheck="false">
     <testsuites>
-        <testsuite name="PrettyDateTime">
+        <testsuite name="HumanReadable">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
