@@ -1,5 +1,5 @@
 {
-    "name": "danielstjules/php-pretty-datetime",
+    "name": "ramphor/date-human-readable",
     "description": "Generates human-readable strings for PHP DateTime objects",
     "keywords": ["human", "readable", "pretty", "datetime", "date", "time", "string"],
     "license": "MIT",
@@ -8,16 +8,23 @@
             "name": "Daniel St. Jules",
             "email": "danielst.jules@gmail.com",
             "homepage": "http://www.danielstjules.com"
+        },
+        {
+            "name": "Puleeno Nguyen",
+            "email": "puleeno@gmail.com",
+            "homepage": "https://puleeno.com"
         }
     ],
     "require": {
         "php": ">=5.3.0"
     },
     "support": {
-        "issues": "https://github.com/danielstjules/php-pretty-datetime/issues",
-        "source": "https://github.com/danielstjules/php-pretty-datetime"
+        "issues": "https://github.com/ramphor/date-human-readable/issues",
+        "source": "https://github.com/ramphor/date-human-readable"
     },
     "autoload": {
-        "psr-4": { "PrettyDateTime\\": "src/" }
+        "psr-4": {
+            "Ramphor\\Date\\": "src/"
+        }
     }
 }
